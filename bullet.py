@@ -15,14 +15,11 @@ class Bullet():
         self.rect = pygame.Rect(pos_x, pos_y, self.width, self.height)
         self.active = True
     
-    def fire(self, msTime):
-        time = msTime
+    def fire(self):
         play_middle_x = self.player.pos_x + (self.player.width / 2)
         play_middle_y = self.player.pos_y + (self.player.height / 2)
         dist_x = play_middle_x - self.pos_x
         dist_y = play_middle_y - self.pos_y
-    
-        
         self.speed_x = dist_x / self.player.pos_x * 3
         self.speed_y = dist_y / self.player.pos_y * 3
 

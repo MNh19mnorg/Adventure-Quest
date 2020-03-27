@@ -33,8 +33,6 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if event.type == pygame.KEYUP:
-            player.attack(event.key)
     
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:

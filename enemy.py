@@ -45,7 +45,7 @@ class Enemy():
         self.move()
         if self.within_range() and len(self.bullets) < 50 and time > 200:
             bullet = Bullet(self.window, self.player, self, self.middle_x, self.middle_y)
-            bullet.fire(msTime)
+            bullet.fire()
             self.bullets.append(bullet)
             self.time = pygame.time.get_ticks()
     
