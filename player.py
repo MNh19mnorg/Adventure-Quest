@@ -24,7 +24,6 @@ class Player():
         self.last_texture = "Player/MS0.png"
     
     def move(self, keys, time):    
-        # print(self.map_pos_x, self.map_pos_y)
         self.speed = time * 0.1
                     
         if keys[pygame.K_DOWN]:
@@ -54,17 +53,6 @@ class Player():
                 self.choose_texture(self.left_texture)
             if not self.outside_map(self.map_pos_x - self.speed, 0):
                 self.map_pos_x -= self.speed           
-        # else:
-        #     print(self.last_texture)
-        #     new_texture = self.last_texture[:len(self.last_texture) - len("1.png")]
-        #     new_texture += "0.png"
-        #     print(new_texture)
-        #     self.texture = pygame.image.load(new_texture)
-        #     self.texture = pygame.transform.scale(self.texture, (self.width, self.height))
-    
-    def attack(self, key):
-        if key == pygame.K_e:
-            print("Attack")
 
     def hit(self):
         self.health -= 1
@@ -80,12 +68,6 @@ class Player():
             self.texture = pygame.image.load(path + textures[2])
             self.last_texture = textures[2]
         self.texture = pygame.transform.scale(self.texture, (self.width, self.height))
-    
-    def grid_pos_x(self):
-        return int(self.map_pos_x / 32)
-
-    def grid_pos_y(self):
-        return int(self.map_pos_y / 32)
                 
     def outside_window(self, new_x, new_y):
         x, y = pygame.display.get_surface().get_size()
@@ -102,9 +84,3 @@ class Player():
     def draw(self):
         self.rect = pygame.Rect(self.pos_x, self.pos_y, self.width, self.height)
         self.window.blit(self.texture, (self.pos_x, self.pos_y))
-
-    def animation(self, time, textures):
-        count = int(len(textures) / time)
-        for texture in textures:
-            self.window.blit(texture, (self.pos_x, self.pos_y))
-            time.sleep(time)
